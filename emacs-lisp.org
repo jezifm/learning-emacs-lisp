@@ -1,0 +1,372 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:1 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+OPTIONS: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+TITLE: emacs-lisp
+#+DATE: <2016-11-02 Wed>
+#+AUTHOR: Jezrael Arciaga
+#+EMAIL: jezarciaga@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
+
+
+* TODO Introduction to emacs lisp [10%]
+** DONE Why
+   CLOSED: [2016-11-02 Wed 20:24]
+** DONE On Reading this Text
+   CLOSED: [2016-11-02 Wed 20:24]
+** DONE Who You Are
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Lisp History
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Note for Novices
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Thank You
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE List Processing
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Lisp Lists
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Run a Program
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Making Errors
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Names & Definitions
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Lisp Interpreter
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Evaluation
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Variables
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Arguments
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE set & setq
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Summary
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Error Message Exercises
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Lisp Lists
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Numbers Lists
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Lisp Atoms
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Whitespace in Lists
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Typing Lists
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE The Lisp Interpreter
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Complications
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Byte Compiling
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Evaluation
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE How the Interpreter Acts
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Evaluating Inner Lists
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Variables
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE fill-column Example
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Void Function
+   CLOSED: [2016-11-02 Wed 20:25]
+** DONE Void Variable
+   CLOSED: [2016-11-02 Wed 20:25]
+** TODO Arguments
+** TODO Data types
+** TODO Args as Variable or List
+** TODO Variable Number of Arguments
+** TODO Wrong Type of Argument
+** TODO message
+** TODO Setting the Value of a Variable
+** TODO Using set
+** TODO Using setq
+** TODO Counting
+** TODO Practicing Evaluation
+** TODO How to Evaluate
+** TODO Buffer Names
+** TODO Getting Buffers
+** TODO Switching Buffers
+** TODO Buffer Size & Locations
+** TODO Evaluation Exercise
+** TODO How To Write Function Definitions
+** TODO Primitive Functions
+** TODO defun
+** TODO Install
+** TODO Interactive
+** TODO Interactive Options
+** TODO Permanent Installation
+** TODO let
+** TODO if
+** TODO else
+** TODO Truth & Falsehood
+** TODO save-excursion
+** TODO Review
+** TODO defun Exercises
+** TODO Install a Function Definition
+** TODO Effect of installation
+** TODO Change a defun
+** TODO Make a Function Interactive
+** TODO Interactive multiply-by-seven
+** TODO multiply-by-seven in detail
+** TODO let
+** TODO Prevent confusion
+** TODO Parts of let Expression
+** TODO Sample let Expression
+** TODO Uninitialized let Variables
+** TODO The if Special Form
+** TODO if in more detail
+** TODO type-of-animal in detail
+** TODO Truth and Falsehood in Emacs Lisp
+** TODO nil explained
+** TODO save-excursion
+** TODO Point and mark
+** TODO Template for save-excursion
+** TODO A Few Buffer-Related Functions
+** TODO Finding More
+** TODO simplified-beginning-of-buffer
+** TODO mark-whole-buffer
+** TODO append-to-buffer
+** TODO Buffer Related Review
+** TODO Buffer Exercises
+** TODO The Definition of mark-whole-buffer
+** TODO mark-whole-buffer overview
+** TODO Body of mark-whole-buffer
+** TODO The Definition of append-to-buffer
+** TODO append-to-buffer overview
+** TODO append interactive
+** TODO append-to-buffer body
+** TODO append save-excursion
+** TODO A Few More Complex Functions
+** TODO copy-to-buffer
+** TODO insert-buffer
+** TODO beginning-of-buffer
+** TODO Second Buffer Related Review
+** TODO optional Exercise
+** TODO The Definition of insert-buffer
+** TODO insert-buffer code
+** TODO insert-buffer interactive
+** TODO insert-buffer body
+** TODO if & or
+** TODO Insert or
+** TODO Insert let
+** TODO New insert-buffer
+** TODO The Interactive Expression in insert-buffer
+** TODO Read-only buffer
+** TODO b for interactive
+** TODO Complete Definition of beginning-of-buffer
+** TODO Optional Arguments
+** TODO beginning-of-buffer opt arg
+** TODO beginning-of-buffer complete
+** TODO beginning-of-buffer with an Argument
+** TODO Disentangle beginning-of-buffer
+** TODO Large buffer case
+** TODO Small buffer case
+** TODO Narrowing and Widening
+** TODO Narrowing advantages
+** TODO save-restriction
+** TODO what-line
+** TODO narrow Exercise
+** TODO car, cdr, cons: Fundamental Functions
+** TODO Strange Names
+** TODO car & cdr
+** TODO cons
+** TODO nthcdr
+** TODO nth
+** TODO setcar
+** TODO setcdr
+** TODO cons Exercise
+** TODO cons
+** TODO Build a list
+** TODO length
+** TODO Cutting and Storing Text
+** TODO Storing Text
+** TODO zap-to-char
+** TODO kill-region
+** TODO copy-region-as-kill
+** TODO Digression into C
+** TODO defvar
+** TODO cons & search-fwd Review
+** TODO search Exercises
+** TODO zap-to-char
+** TODO Complete zap-to-char
+** TODO zap-to-char interactive
+** TODO zap-to-char body
+** TODO search-forward
+** TODO progn
+** TODO Summing up zap-to-char
+** TODO kill-region
+** TODO Complete kill-region
+** TODO condition-case
+** TODO Lisp macro
+** TODO copy-region-as-kill
+** TODO Complete copy-region-as-kill
+** TODO copy-region-as-kill body
+** TODO The Body of copy-region-as-kill
+** TODO last-command & this-command
+** TODO kill-append function
+** TODO kill-new function
+** TODO Initializing a Variable with defvar
+** TODO See variable current value
+** TODO defvar and asterisk
+** TODO How Lists are Implemented
+** TODO Lists diagrammed
+** TODO Symbols as Chest
+** TODO List Exercise
+** TODO Yanking Text Back
+** TODO Kill Ring Overview
+** TODO kill-ring-yank-pointer
+** TODO yank nthcdr Exercises
+** TODO Loops and Recursion
+** TODO while
+** TODO dolist dotimes
+** TODO Recursion
+** TODO Looping exercise
+** TODO while
+** TODO Looping with while
+** TODO Loop Example
+** TODO print-elements-of-list
+** TODO Incrementing Loop
+** TODO Incrementing Loop Details
+** TODO Decrementing Loop
+** TODO Details of an Incrementing Loop
+** TODO Incrementing Example
+** TODO Inc Example parts
+** TODO Inc Example altogether
+** TODO Loop with a Decrementing Counter
+** TODO Decrementing Example
+** TODO Dec Example parts
+** TODO Dec Example altogether
+** TODO Save your time: dolist and dotimes
+** TODO dolist
+** TODO dotimes
+** TODO Recursion
+** TODO Building Robots
+** TODO Recursive Definition Parts
+** TODO Recursion with list
+** TODO Recursive triangle function
+** TODO Recursion with cond
+** TODO Recursive Patterns
+** TODO No Deferment
+** TODO No deferment solution
+** TODO Recursion in Place of a Counter
+** TODO Recursive Example arg of 1 or 2
+** TODO Recursive Example arg of 3 or 4
+** TODO Recursive Patterns
+** TODO Every
+** TODO Accumulate
+** TODO Keep
+** TODO Regular Expression Searches
+** TODO sentence-end
+** TODO re-search-forward
+** TODO forward-sentence
+** TODO forward-paragraph
+** TODO Regexp Review
+** TODO re-search Exercises
+** TODO forward-sentence
+** TODO Complete forward-sentence
+** TODO fwd-sentence while loops
+** TODO fwd-sentence re-search
+** TODO forward-paragraph: a Goldmine of Functions
+** TODO forward-paragraph in brief
+** TODO fwd-para let
+** TODO fwd-para while
+** TODO Counting: Repetition and Regexps
+** TODO Why Count Words
+** TODO count-words-example
+** TODO recursive-count-words
+** TODO Counting Exercise
+** TODO The count-words-example Function
+** TODO Design count-words-example
+** TODO Whitespace Bug
+** TODO Counting Words in a defun
+** TODO Divide and Conquer
+** TODO Words and Symbols
+** TODO Syntax
+** TODO count-words-in-defun
+** TODO Several defuns
+** TODO Find a File
+** TODO lengths-list-file
+** TODO Several files
+** TODO Several files recursively
+** TODO Prepare the data
+** TODO Count Words in defuns in Different Files
+** TODO lengths-list-many-files
+** TODO append
+** TODO Prepare the Data for Display in a Graph
+** TODO Data for Display in Detail
+** TODO Sorting
+** TODO Files List
+** TODO Counting function definitions
+** TODO Readying a Graph
+** TODO Columns of a graph
+** TODO graph-body-print
+** TODO recursive-graph-body-print
+** TODO Printed Axes
+** TODO Line Graph Exercise
+** TODO Your .emacs File
+** TODO Default Configuration
+** TODO Site-wide Init
+** TODO defcustom
+** TODO Beginning init File
+** TODO Text and Auto-fill
+** TODO Mail Aliases
+** TODO Indent Tabs Mode
+** TODO Keybindings
+** TODO Keymaps
+** TODO Loading Files
+** TODO Autoload
+** TODO Simple Extension
+** TODO X11 Colors
+** TODO Miscellaneous
+** TODO Mode Line
+** TODO Debugging
+** TODO debug
+** TODO debug-on-entry
+** TODO debug-on-quit
+** TODO edebug
+** TODO Debugging Exercises
+** TODO Handling the Kill Ring
+** TODO What the Kill Ring Does
+** TODO current-kill
+** TODO yank
+** TODO yank-pop
+** TODO ring file
+** TODO The current-kill Function
+** TODO Code for current-kill
+** TODO Understanding current-kill
+** TODO current-kill in Outline
+** TODO Body of current-kill
+** TODO Digression concerning error
+** TODO Determining the Element
+** TODO A Graph with Labeled Axes
+** TODO Labeled Example
+** TODO print-graph Varlist
+** TODO print-Y-axis
+** TODO print-X-axis
+** TODO Print Whole Graph
+** TODO The print-Y-axis Function
+** TODO print-Y-axis in Detail
+** TODO Height of label
+** TODO Compute a Remainder
+** TODO Y Axis Element
+** TODO Y-axis-column
+** TODO print-Y-axis Penultimate
+** TODO The print-X-axis Function
+** TODO Similarities differences
+** TODO X Axis Tic Marks
+** TODO Printing the Whole Graph
+** TODO The final version
+** TODO Test print-graph
+** TODO Graphing words in defuns
+** TODO lambda
+** TODO mapcar
+** TODO Another Bug
+** TODO Final printed graph
