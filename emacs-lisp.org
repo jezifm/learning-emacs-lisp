@@ -12,7 +12,7 @@
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO Introduction to emacs lisp [10%]
+* TODO Introduction to emacs lisp [13%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -79,16 +79,26 @@
    CLOSED: [2016-11-02 Wed 20:25]
 ** DONE Void Variable
    CLOSED: [2016-11-02 Wed 20:25]
-** TODO Arguments
-** TODO Data types
-** TODO Args as Variable or List
-** TODO Variable Number of Arguments
-** TODO Wrong Type of Argument
-** TODO message
-** TODO Setting the Value of a Variable
-** TODO Using set
-** TODO Using setq
-** TODO Counting
+** DONE Arguments
+   CLOSED: [2016-11-02 Wed 22:12]
+** DONE Data types
+   CLOSED: [2016-11-02 Wed 22:12]
+** DONE Args as Variable or List
+   CLOSED: [2016-11-02 Wed 22:12]
+** DONE Variable Number of Arguments
+   CLOSED: [2016-11-02 Wed 22:12]
+** DONE Wrong Type of Argument
+   CLOSED: [2016-11-02 Wed 22:12]
+** DONE message
+   CLOSED: [2016-11-02 Wed 22:23]
+** DONE Setting the Value of a Variable
+   CLOSED: [2016-11-02 Wed 22:23]
+** DONE Using set
+   CLOSED: [2016-11-02 Wed 22:23]
+** DONE Using setq
+   CLOSED: [2016-11-02 Wed 22:38]
+** DONE Counting
+   CLOSED: [2016-11-02 Wed 22:38]
 ** TODO Practicing Evaluation
 ** TODO How to Evaluate
 ** TODO Buffer Names
