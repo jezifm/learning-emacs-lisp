@@ -12,7 +12,7 @@
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO Introduction to emacs lisp [13%]
+* TODO Introduction to emacs lisp [14%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -99,10 +99,16 @@
    CLOSED: [2016-11-02 Wed 22:38]
 ** DONE Counting
    CLOSED: [2016-11-02 Wed 22:38]
-** TODO Practicing Evaluation
-** TODO How to Evaluate
-** TODO Buffer Names
+** DONE Practicing Evaluation
+   CLOSED: [2016-11-02 Wed 23:37]
+** DONE How to Evaluate
+   CLOSED: [2016-11-02 Wed 23:37]
+** DONE Buffer Names
+   CLOSED: [2016-11-03 Thu 08:07]
+(insert (concat " ; " (buffer-name))) ; emacs-lisp.org
+(insert (concat " ; " (buffer-file-name))) ; d:/workspace/learning/learning-emacs-lisp/emacs-lisp.org
 ** TODO Getting Buffers
+
 ** TODO Switching Buffers
 ** TODO Buffer Size & Locations
 ** TODO Evaluation Exercise
