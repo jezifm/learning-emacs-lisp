@@ -12,7 +12,7 @@
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO Introduction to emacs lisp [14%]
+* TODO Introduction to emacs lisp [27%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -107,51 +107,132 @@
    CLOSED: [2016-11-03 Thu 08:07]
 (insert (concat " ; " (buffer-name))) ; emacs-lisp.org
 (insert (concat " ; " (buffer-file-name))) ; d:/workspace/learning/learning-emacs-lisp/emacs-lisp.org
-** TODO Getting Buffers
+** DONE Getting Buffers
+   CLOSED: [2016-11-03 Thu 08:42]
+** DONE Switching Buffers
+   CLOSED: [2016-11-03 Thu 08:56]
+** DONE Buffer Size & Locations
+   CLOSED: [2016-11-03 Thu 09:03]
+*** buffer-size
+(buffer-size)
+*** point
+(point)
+*** point-min
+(point-min)
+(point-max)
+*** point-max
+** DONE Evaluation Exercise
+   CLOSED: [2016-11-03 Thu 09:03]
+(insert (buffer-name))emacs-lisp.org
+(insert
+(buffer-file-name))d:/workspace/learning/learning-emacs-lisp/emacs-lisp.org
+(insert (int-to-string (buffer-size)))11248
+(insert (int-to-string (point-max)))11249
+(insert (int-to-string (point)))3779
+** DONE How To Write Function Definitions
+   CLOSED: [2016-11-03 Thu 09:03]
+** DONE Primitive Functions
+   CLOSED: [2016-11-03 Thu 09:03]
+** DONE defun
+   CLOSED: [2016-11-06 Sun 02:00]
+** DONE Install
+   CLOSED: [2016-11-03 Thu 10:39]
+#+BEGIN_SRC elisp
+  (defun multiply-by-seven (number)
+    "Multiply NUMBER by seven"
+    (interactive "p")
+    (message "The result is %d" (* 7 number)))
+#+END_SRC
+** DONE Interactive
+   CLOSED: [2016-11-06 Sun 02:00]
+** DONE Interactive Options
+   CLOSED: [2016-11-06 Sun 02:00]
+** DONE Permanent Installation
+   CLOSED: [2016-11-06 Sun 02:00]
+** DONE let
+   CLOSED: [2016-11-06 Sun 02:00]
+** DONE if
+   CLOSED: [2016-11-06 Sun 02:00]
+** DONE else
+   CLOSED: [2016-11-06 Sun 02:00]
+** DONE Truth & Falsehood
+   CLOSED: [2016-11-06 Sun 02:00]
+** DONE save-excursion
+   CLOSED: [2016-11-06 Sun 02:00]
+** DONE Review
+   CLOSED: [2016-11-06 Sun 02:03]
+** DONE defun Exercises
+   CLOSED: [2016-11-06 Sun 02:03]
+** DONE Install a Function Definition
+   CLOSED: [2016-11-06 Sun 02:03]
+** DONE Effect of installation
+   CLOSED: [2016-11-06 Sun 02:03]
+** DONE Change a defun
+   CLOSED: [2016-11-06 Sun 02:03]
+** DONE Make a Function Interactive
+   CLOSED: [2016-11-06 Sun 02:03]
+** DONE Interactive multiply-by-seven
+   CLOSED: [2016-11-06 Sun 02:03]
+** DONE multiply-by-seven in detail
+   CLOSED: [2016-11-06 Sun 02:03]
+** DONE let
+   CLOSED: [2016-11-06 Sun 02:03]
+** DONE Prevent confusion
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE Parts of let Expression
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE Sample let Expression
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE Uninitialized let Variables
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE The if Special Form
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE if in more detail
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE type-of-animal in detail
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE Truth and Falsehood in Emacs Lisp
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE nil explained
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE save-excursion
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE Point and mark
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE Template for save-excursion
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE A Few Buffer-Related Functions
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE Finding More
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE simplified-beginning-of-buffer
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE mark-whole-buffer
+   CLOSED: [2016-11-06 Sun 02:04]
+** DONE [[https://www.gnu.org/software/emacs/manual/eintr.html#append_002dto_002dbuffer][append-to-buffer]]
+   CLOSED: [2016-11-06 Sun 14:31]
+#+BEGIN_SRC elisp
+  (defun jez-append-to-buffer (buffer start end)
+    "Append to specified BUFFER the test of the region
+  specified by START and END"
+    (interactive (list (read-buffer "Buffer name: " (other-buffer))
+                       (region-beginning)
+                       (region-end)))
+    (let ((string-to-add (buffer-substring start end)))
+      (save-excursion
+        (get-buffer-create buffer)
+        (insert string-to-add))))
+#+END_SRC
 
-** TODO Switching Buffers
-** TODO Buffer Size & Locations
-** TODO Evaluation Exercise
-** TODO How To Write Function Definitions
-** TODO Primitive Functions
-** TODO defun
-** TODO Install
-** TODO Interactive
-** TODO Interactive Options
-** TODO Permanent Installation
-** TODO let
-** TODO if
-** TODO else
-** TODO Truth & Falsehood
-** TODO save-excursion
-** TODO Review
-** TODO defun Exercises
-** TODO Install a Function Definition
-** TODO Effect of installation
-** TODO Change a defun
-** TODO Make a Function Interactive
-** TODO Interactive multiply-by-seven
-** TODO multiply-by-seven in detail
-** TODO let
-** TODO Prevent confusion
-** TODO Parts of let Expression
-** TODO Sample let Expression
-** TODO Uninitialized let Variables
-** TODO The if Special Form
-** TODO if in more detail
-** TODO type-of-animal in detail
-** TODO Truth and Falsehood in Emacs Lisp
-** TODO nil explained
-** TODO save-excursion
-** TODO Point and mark
-** TODO Template for save-excursion
-** TODO A Few Buffer-Related Functions
-** TODO Finding More
-** TODO simplified-beginning-of-buffer
-** TODO mark-whole-buffer
-** TODO append-to-buffer
-** TODO Buffer Related Review
+#+RESULTS:
+: jez-append-to-buffer
+
+** DONE Buffer Related Review
+   CLOSED: [2016-11-06 Sun 14:33]
 ** TODO Buffer Exercises
+*** Write your own =simplified-end-of-buffer= function definition; then test it to see wether it works
+*** Use =if= and =get-buffer= to write a function that prints a message telling you whether a buffer exists
+*** Using =find-tag=, find the source for the =copy-to-buffer= function.
 ** TODO The Definition of mark-whole-buffer
 ** TODO mark-whole-buffer overview
 ** TODO Body of mark-whole-buffer
