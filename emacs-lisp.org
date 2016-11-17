@@ -1,18 +1,18 @@
-#+OPTIONS: ':nil *:t -:t ::t <:t H:1 \n:nil ^:t arch:headline
-#+OPTIONS: author:t c:nil creator:nil d:(not "LOGBOOK") date:t e:t
-#+OPTIONS: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t
-#+OPTIONS: tags:t tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+TITLE: emacs-lisp
 #+DATE: <2016-11-02 Wed>
 #+AUTHOR: Jezrael Arciaga
 #+EMAIL: jezarciaga@gmail.com
+#+OPTIONS: ':nil *:t -:t ::t <:t H:1 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+OPTIONS: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+LANGUAGE: en
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO Introduction to emacs lisp [27%]
+* TODO Introduction to emacs lisp [31%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -229,21 +229,117 @@
 
 ** DONE Buffer Related Review
    CLOSED: [2016-11-06 Sun 14:33]
-** TODO Buffer Exercises
-*** Write your own =simplified-end-of-buffer= function definition; then test it to see wether it works
-*** Use =if= and =get-buffer= to write a function that prints a message telling you whether a buffer exists
-*** Using =find-tag=, find the source for the =copy-to-buffer= function.
-** TODO The Definition of mark-whole-buffer
-** TODO mark-whole-buffer overview
-** TODO Body of mark-whole-buffer
-** TODO The Definition of append-to-buffer
-** TODO append-to-buffer overview
-** TODO append interactive
-** TODO append-to-buffer body
-** TODO append save-excursion
-** TODO A Few More Complex Functions
-** TODO copy-to-buffer
-** TODO insert-buffer
+** DONE Buffer Exercises
+   CLOSED: [2016-11-13 Sun 21:58]
+*** DONE Write your own =simplified-end-of-buffer= function definition; then test it to see wether it works
+    CLOSED: [2016-11-10 Thu 22:42]
+
+#+BEGIN_SRC elisp
+  (defun simplified-end-of-buffer ()
+    "Go to end of buffer"
+    (goto-char (point-max)))
+  (simplified-end-of-buffer)
+#+END_SRC
+
+#+RESULTS:
+: simplified-end-of-buffer
+
+*** DONE Use =if= and =get-buffer= to write a function that prints a message telling you whether a buffer exists
+    CLOSED: [2016-11-13 Sun 21:33]
+
+#+BEGIN_SRC elisp
+  (defun jez/buffer-exists (buffer)
+    "Prints in mini-buffer if `buffer` exists"
+    (interactive
+     (list (read-buffer "Input buffer name:"
+                        (other-buffer (current-buffer)))))
+    (let* ((buffer-names (mapcar 'buffer-name (buffer-list))))
+      (if (member buffer buffer-names)
+          (message (format "Buffer: %s exists" buffer))
+        (message (format "Buffer: %s doesn't exists" buffer)))))
+  (jez/buffer-exists "non-existing-buffer")
+#+END_SRC
+
+#+RESULTS:
+: Buffer: non-existing-buffer doesn’t exists
+
+(buffer-name (car (buffer-list)))
+(member "test" (mapcar 'buffer-name (buffer-list)))
+#+RESULTS:
+: non existing buffer buffer exists
+
+
+- [X] learn interactive mode
+- [X] how it works
+- [X] what are the codes like =p= =P=
+- [X] read-buffer not working in interactive mode
+- [X] append-to-buffer example seems to work using read-buffer
+
+*** SKIP Using =find-tag=, find the source for the =copy-to-buffer= function.
+**** [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Tags.html][Learn Tags]]
+
+#+BEGIN_SRC elisp
+  (find-tag "test")
+#+END_SRC
+** DONE The Definition of mark-whole-buffer
+   CLOSED: [2016-11-13 Sun 23:38]
+** DONE mark-whole-buffer overview
+   CLOSED: [2016-11-13 Sun 23:38]
+** DONE Body of mark-whole-buffer
+   CLOSED: [2016-11-13 Sun 23:38]
+** DONE The Definition of append-to-buffer
+   CLOSED: [2016-11-13 Sun 23:38]
+** DONE append-to-buffer overview
+   CLOSED: [2016-11-13 Sun 23:39]
+** DONE append interactive
+   CLOSED: [2016-11-13 Sun 23:39]
+** DONE append-to-buffer body
+   CLOSED: [2016-11-13 Sun 23:39]
+** DONE append save-excursion
+   CLOSED: [2016-11-13 Sun 23:39]
+** DONE A Few More Complex Functions
+   CLOSED: [2016-11-13 Sun 23:39]
+** DONE copy-to-buffer
+   CLOSED: [2016-11-16 Wed 22:19]
+
+#+BEGIN_SRC elisp
+  (defun jez/copy-to-buffer (buffer)
+    "Inserts selected region to BUFFER"
+    (interactive "bInsert to buffer:")
+    (let* ((string-to-copy (buffer-substring (region-beginning) (region-end))))
+    (with-current-buffer buffer
+      (insert (format "%s %s" string-to-copy string-to-copy)))))
+#+END_SRC
+
+#+RESULTS:
+: jez/copy-to-buffer
+
+** DONE insert-buffer
+   CLOSED: [2016-11-18 Fri 00:46]
+
+#+BEGIN_SRC elisp
+      (defun jez/insert-buffer (buffer)
+        "Insert after point the contents of another BUFFER.  Puts
+  mark after the inserted text. BUFFER may be a buffer or a buffer
+  name."
+        (interactive "*bInsert buffer: ")
+        (let (start
+              end
+              mark-new
+              (buffer (or (bufferp buffer) (get-buffer buffer))))
+          (save-excursion
+            (save-excursion
+              (set-buffer buffer)
+              (setq start (point-min))
+              (setq end (point-max)))
+            (insert-buffer-substring buffer start end)
+            (setq mark-new (point)))
+          (push-mark mark-new)))
+#+END_SRC
+
+#+RESULTS:
+: jez/insert-buffer
+
 ** TODO beginning-of-buffer
 ** TODO Second Buffer Related Review
 ** TODO optional Exercise
