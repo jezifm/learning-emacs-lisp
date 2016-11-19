@@ -340,7 +340,64 @@
 #+RESULTS:
 : jez/insert-buffer
 
-** TODO beginning-of-buffer
+** DONE beginning-of-buffer
+   CLOSED: [2016-11-19 Sat 19:48]
+
+#+BEGIN_SRC elisp
+  (defun jez/beginning-of-buffer (prefix)
+    "Go to beginning of BUFFER"
+    (interactive "P")
+    (goto-char (point-min)))
+#+END_SRC
+#+RESULTS:
+: jez/beginning-of-buffer
+
+*** Optional Arguments
+
+    To create optional argument use the =&optional= keyword.
+
+**** Example
+
+#+BEGIN_SRC elisp
+  (defun jez/beginning-of-buffer (&optional arg)
+    "docstring"
+    (interactive "p")
+    (goto-char (point-min))
+    (cond ((stringp arg) (message (format "%s is a string" arg)))
+          ((integerp arg) (message (format "%s is an integer" arg)))
+          ((listp arg) (message (format "%s is a list" arg)))
+          (t (message "default"))))
+#+END_SRC
+
+#+RESULTS:
+: jez/beginning-of-buffer
+
+***** "P" in the interactive expression
+
+The "P" in the interactive expression tells Emacs to pass a prefix
+argument, if there is one, to the function in raw form. A prefix
+argument is made by typing the META key followed by a number, or by
+typing C-u and then a number. (If you don’t type a number, C-u
+defaults to a cons cell with a 4. A lowercase "p" in the interactive
+expression causes the function to convert a prefix arg to a number.)
+
+*** =beginning-of-buffer= with an Argument
+
+#+BEGIN_SRC elisp
+  (defun jez/beginning-of-buffer (&optional arg)
+    "Go to beginning of current buffer"
+    (interactive "P")
+    (let* ((size (buffer-size))
+          (point-target (if (< 1000 size)
+                            ;; Avoid overflow for large buffer sizes!
+                            (* (prefix-numeric-value arg) (/ size 10))
+                          (/ (+ 10 (* size (prefix-numeric-value arg))) 10))))
+      (message (format "going to %s" point-target))))
+#+END_SRC
+
+#+RESULTS:
+: jez/beginning-of-buffer
+
 ** TODO Second Buffer Related Review
 ** TODO optional Exercise
 ** TODO The Definition of insert-buffer
