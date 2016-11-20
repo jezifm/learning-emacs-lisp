@@ -465,23 +465,33 @@ expression causes the function to convert a prefix arg to a number.)
    CLOSED: [2016-11-20 Sun 12:57]
 ** DONE Disentangle beginning-of-buffer
    CLOSED: [2016-11-20 Sun 12:57]
-** TODO Large buffer case
+** DONE Large buffer case
+   CLOSED: [2016-11-20 Sun 20:35]
 
 #+BEGIN_SRC elisp
   (defun jez/beginning-of-buffer (&optional prefix)
     "Move cursor to beginning of buffer"
     (interactive "p")
     (let* ((prefix (if prefix prefix 1))
+           (size (- (point-max) (point-min)))
            (point-target (if (/= prefix 1)
-                             (floor (* (point-max) (/ prefix 10.0)))
+                             (floor (* size (/ prefix 10.0)))
                            (point-min))))
       (goto-char point-target)))
 #+END_SRC
+
 #+RESULTS:
 : jez/beginning-of-buffer
 
-** TODO Small buffer case
+*** issue
+**** I don't see a problem in large buffer
+***** buffer size > 10000
+***** read *What happens in a large buffer* (not worth it)
+** DONE Small buffer case
+   CLOSED: [2016-11-20 Sun 20:35]
 ** TODO Narrowing and Widening
+
+
 ** TODO Narrowing advantages
 ** TODO save-restriction
 ** TODO what-line
