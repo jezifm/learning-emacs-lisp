@@ -12,7 +12,7 @@
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [31%]
+* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [37%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -398,26 +398,86 @@ expression causes the function to convert a prefix arg to a number.)
 #+RESULTS:
 : jez/beginning-of-buffer
 
-** TODO Second Buffer Related Review
-** TODO optional Exercise
-** TODO The Definition of insert-buffer
-** TODO insert-buffer code
-** TODO insert-buffer interactive
-** TODO insert-buffer body
-** TODO if & or
-** TODO Insert or
-** TODO Insert let
-** TODO New insert-buffer
-** TODO The Interactive Expression in insert-buffer
-** TODO Read-only buffer
-** TODO b for interactive
-** TODO Complete Definition of beginning-of-buffer
-** TODO Optional Arguments
-** TODO beginning-of-buffer opt arg
-** TODO beginning-of-buffer complete
-** TODO beginning-of-buffer with an Argument
-** TODO Disentangle beginning-of-buffer
+** DONE Second Buffer Related Review
+   CLOSED: [2016-11-20 Sun 10:02]
+
+
+#+BEGIN_SRC elisp
+  (defun jez/beginning-of-buffer (&optional arg)
+    "This is a test"
+    (interactive "P")
+    (goto-char (point-min)))
+#+END_SRC
+
+#+RESULTS:
+: jez/beginning-of-buffer
+
+** DONE optional Exercise
+   CLOSED: [2016-11-20 Sun 12:45]
+
+#+BEGIN_SRC elisp
+  (defun jez/compare-with-fill-column (number)
+    "Compare NUMBER with FILL-COLUMN"
+    (interactive "nNumber to check: ")
+    (let (condition)
+      (cond
+       ((< number fill-column) (setq condition "less than"))
+       ((= number fill-column) (setq condition "equal to"))
+       (t (setq condition "greater than")))
+      (message (format "%s is %s fill-column" number condition))))
+#+END_SRC
+
+#+RESULTS:
+: jez/compare-with-fill-column
+
+** DONE The Definition of insert-buffer
+   CLOSED: [2016-11-20 Sun 12:52]
+** DONE insert-buffer code
+   CLOSED: [2016-11-20 Sun 12:52]
+** DONE insert-buffer interactive
+   CLOSED: [2016-11-20 Sun 12:52]
+** DONE insert-buffer body
+   CLOSED: [2016-11-20 Sun 12:52]
+** DONE if & or
+   CLOSED: [2016-11-20 Sun 12:56]
+
+** DONE Insert or
+   CLOSED: [2016-11-20 Sun 12:56]
+** DONE Insert let
+   CLOSED: [2016-11-20 Sun 12:56]
+** DONE New insert-buffer
+   CLOSED: [2016-11-20 Sun 12:57]
+** DONE The Interactive Expression in insert-buffer
+   CLOSED: [2016-11-20 Sun 12:57]
+** DONE Read-only buffer
+   CLOSED: [2016-11-20 Sun 12:57]
+** DONE b for interactive
+   CLOSED: [2016-11-20 Sun 12:57]
+** DONE Complete Definition of beginning-of-buffer
+   CLOSED: [2016-11-20 Sun 12:57]
+** DONE Optional Arguments
+   CLOSED: [2016-11-20 Sun 12:57]
+** DONE beginning-of-buffer opt arg
+   CLOSED: [2016-11-20 Sun 12:57]
+** DONE beginning-of-buffer complete
+   CLOSED: [2016-11-20 Sun 12:57]
+** DONE beginning-of-buffer with an Argument
+   CLOSED: [2016-11-20 Sun 12:57]
+** DONE Disentangle beginning-of-buffer
+   CLOSED: [2016-11-20 Sun 12:57]
 ** TODO Large buffer case
+
+#+BEGIN_SRC elisp
+  (defun jez/beginning-of-buffer (&optional prefix)
+    "Move cursor to beginning of buffer"
+    (interactive "p")
+    (insert (format "%s" prefix))
+    (goto-char (point-min)))
+#+END_SRC
+#+RESULTS:
+: jez/beginning-of-buffer
+
+
 ** TODO Small buffer case
 ** TODO Narrowing and Widening
 ** TODO Narrowing advantages
