@@ -471,12 +471,14 @@ expression causes the function to convert a prefix arg to a number.)
   (defun jez/beginning-of-buffer (&optional prefix)
     "Move cursor to beginning of buffer"
     (interactive "p")
-    (insert (format "%s" prefix))
-    (goto-char (point-min)))
+    (let* ((prefix (if prefix prefix 1))
+           (point-target (if (/= prefix 1)
+                             (floor (* (point-max) (/ prefix 10.0)))
+                           (point-min))))
+      (goto-char point-target)))
 #+END_SRC
 #+RESULTS:
 : jez/beginning-of-buffer
-
 
 ** TODO Small buffer case
 ** TODO Narrowing and Widening
