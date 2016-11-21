@@ -526,7 +526,30 @@ expression causes the function to convert a prefix arg to a number.)
    CLOSED: [2016-11-21 Mon 21:41]
 ** DONE what-line
    CLOSED: [2016-11-21 Mon 21:41]
-** TODO narrow Exercise
+** DONE narrow Exercise
+   CLOSED: [2016-11-21 Mon 21:47]
+
+*** Display the first 60 chars of current buffer, even narrowed buffer
+
+*** use the following functions [66%]
+    - [X] save-restriction
+    - [X] widen
+    - [ ] goto-char :: no need
+    - [ ] point-min :: no need
+    - [X] message
+    - [X] buffer-substring
+
+#+BEGIN_SRC elisp
+  (defun jez/narrow-exercise ()
+    "Display the first 60 chars of current buffer"
+    (interactive)
+    (save-restriction
+      (widen)
+      (message (buffer-substring 1 60))))
+#+END_SRC
+#+RESULTS:
+: jez/narrow-exercise
+
 ** TODO car, cdr, cons: Fundamental Functions
 ** TODO Strange Names
 ** TODO car & cdr
