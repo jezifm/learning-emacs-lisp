@@ -12,7 +12,7 @@
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [43%]
+* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [47%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -599,22 +599,77 @@ expression causes the function to convert a prefix arg to a number.)
    CLOSED: [2016-11-24 Thu 22:00]
 ** DONE length
    CLOSED: [2016-11-24 Thu 22:00]
-** TODO Cutting and Storing Text
-** TODO Storing Text
-** TODO zap-to-char
-** TODO kill-region
-** TODO copy-region-as-kill
-** TODO Digression into C
-** TODO defvar
-** TODO cons & search-fwd Review
-** TODO search Exercises
-** TODO zap-to-char
-** TODO Complete zap-to-char
-** TODO zap-to-char interactive
-** TODO zap-to-char body
-** TODO search-forward
-** TODO progn
-** TODO Summing up zap-to-char
+** DONE Cutting and Storing Text
+   CLOSED: [2016-11-24 Thu 22:06]
+
+** DONE Storing Text
+   CLOSED: [2016-11-24 Thu 22:06]
+** DONE zap-to-char
+   CLOSED: [2016-11-24 Thu 23:17]
+
+#+BEGIN_SRC elisp
+  (defun zap-to-char (arg char)
+    "Kill up to and including ARG'th occurrence of CHAR.
+       Case is ignored if `case-fold-search' is non-nil in the current buffer.
+       Goes backward if ARG is negative; error if CHAR not found."
+    (interactive "p\ncZap to char: ")
+    (if (char-table-p translation-table-for-input)
+        (setq char (or (aref translation-table-for-input char) char)))
+    (kill-region (point) (progn
+                           (search-forward (char-to-string char)
+                                           nil nil arg)
+                           (point))))
+#+END_SRC
+
+** DONE kill-region
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE copy-region-as-kill
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE Digression into C
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE defvar
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE cons & search-fwd Review
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE search Exercises
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE zap-to-char
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE Complete zap-to-char
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE zap-to-char interactive
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE zap-to-char body
+   CLOSED: [2016-11-24 Thu 23:18]
+** DONE search-forward
+   CLOSED: [2016-11-24 Thu 23:23]
+
+#+BEGIN_SRC elisp
+  (search-forward "END_SRC")
+#+END_SRC
+
+#+RESULTS:
+: 19031
+
+
+** DONE progn
+   CLOSED: [2016-11-24 Thu 23:24]
+** DONE Summing up zap-to-char
+   CLOSED: [2016-11-25 Fri 00:18]
+
+#+BEGIN_SRC elisp
+  (defun jez/zap-to-char (arg char)
+    "Implement emacs zap-to-char for exercise"
+    (interactive "p\ncZap to char:")
+    (let* ((point-start (point))
+           (point-end (save-excursion
+                        (search-forward (char-to-string char))
+                        (point))))
+      (kill-region point-start point-end)))
+#+END_SRC
+#+RESULTS:
+: jez/zap-to-char
+
 ** TODO kill-region
 ** TODO Complete kill-region
 ** TODO condition-case
