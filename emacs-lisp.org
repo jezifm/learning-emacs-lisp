@@ -12,7 +12,7 @@
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [39%]
+* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [43%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -550,18 +550,55 @@ expression causes the function to convert a prefix arg to a number.)
 #+RESULTS:
 : jez/narrow-exercise
 
-** TODO car, cdr, cons: Fundamental Functions
-** TODO Strange Names
-** TODO car & cdr
-** TODO cons
-** TODO nthcdr
-** TODO nth
-** TODO setcar
-** TODO setcdr
-** TODO cons Exercise
-** TODO cons
-** TODO Build a list
-** TODO length
+** DONE car, cdr, cons: Fundamental Functions
+   CLOSED: [2016-11-24 Thu 22:00]
+
+#+BEGIN_SRC elisp
+  (defun jez/beginning-of-buffer (&optional buffer-name)
+    "Go to the beginning of buffer"
+    (interactive "bBuffer Name: ")
+    (message buffer-name))
+#+END_SRC
+
+#+RESULTS:
+: jez/beginning-of-buffer
+
+
+#+BEGIN_SRC elisp
+  (defun jez/narrow-section ()
+    "Custom function for learning emacs lisp"
+    (interactive)
+    (let ((start (save-excursion (search-backward-regexp "^[0-9]")))
+          (end (save-excursion (search-forward-regexp "^[0-9]"))))
+      (narrow-to-region start (- end 1))))
+#+END_SRC
+
+#+RESULTS:
+: jez/narrow-section
+
+** DONE Strange Names
+   CLOSED: [2016-11-24 Thu 22:00]
+
+** DONE car & cdr
+   CLOSED: [2016-11-24 Thu 22:00]
+** DONE cons
+   CLOSED: [2016-11-24 Thu 22:00]
+** DONE nthcdr
+   CLOSED: [2016-11-24 Thu 22:00]
+** DONE nth
+   CLOSED: [2016-11-24 Thu 22:00]
+** DONE setcar
+   CLOSED: [2016-11-24 Thu 22:00]
+** DONE setcdr
+   CLOSED: [2016-11-24 Thu 22:00]
+** DONE cons Exercise
+   CLOSED: [2016-11-24 Thu 22:00]
+** DONE cons
+   CLOSED: [2016-11-24 Thu 22:00]
+** DONE Build a list
+   CLOSED: [2016-11-24 Thu 22:00]
+** DONE length
+   CLOSED: [2016-11-24 Thu 22:00]
 ** TODO Cutting and Storing Text
 ** TODO Storing Text
 ** TODO zap-to-char
@@ -746,3 +783,15 @@ expression causes the function to convert a prefix arg to a number.)
 ** TODO mapcar
 ** TODO Another Bug
 ** TODO Final printed graph
+** Reference
+*** Helper function
+
+#+NAME: jez/narrow-section
+#+BEGIN_SRC elisp
+  (defun jez/narrow-section ()
+    "Custom function for learning emacs lisp"
+    (interactive)
+    (let ((start (save-excursion (search-backward-regexp "^[0-9]")))
+          (end (save-excursion (search-forward-regexp "^[0-9]"))))
+      (narrow-to-region start (- end 1))))
+#+END_SRC
