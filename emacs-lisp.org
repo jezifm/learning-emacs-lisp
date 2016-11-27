@@ -12,7 +12,7 @@
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [47%]
+* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [50%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -752,12 +752,37 @@ expression causes the function to convert a prefix arg to a number.)
 ** DONE Complete kill-region
    CLOSED: [2016-11-27 Sun 11:00]
 
-** TODO condition-case
-** TODO Lisp macro
-** TODO copy-region-as-kill
-** TODO Complete copy-region-as-kill
-** TODO copy-region-as-kill body
-** TODO The Body of copy-region-as-kill
+** DONE condition-case
+   CLOSED: [2016-11-27 Sun 12:20]
+
+
+** DONE Lisp macro
+   CLOSED: [2016-11-27 Sun 14:27]
+
+** DONE copy-region-as-kill
+   CLOSED: [2016-11-27 Sun 16:11]
+
+#+BEGIN_SRC elisp
+  (defun copy-region-as-kill (beg end)
+    "Save the region as if killed, but don't kill it.
+       In Transient Mark mode, deactivate the mark.
+       If `interprogram-cut-function' is non-nil, also save the text for a window
+       system cut and paste."
+    (interactive "r")
+    (if (eq last-command 'kill-region)
+	(kill-append (filter-buffer-substring beg end) (< end beg))
+      (kill-new (filter-buffer-substring beg end)))
+    (if transient-mark-mode
+	(setq deactivate-mark t))
+    nil)
+#+END_SRC
+
+** DONE Complete copy-region-as-kill
+   CLOSED: [2016-11-27 Sun 16:11]
+** DONE copy-region-as-kill body
+   CLOSED: [2016-11-27 Sun 16:11]
+** DONE The Body of copy-region-as-kill
+   CLOSED: [2016-11-27 Sun 16:11]
 ** TODO last-command & this-command
 ** TODO kill-append function
 ** TODO kill-new function
