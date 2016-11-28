@@ -12,7 +12,7 @@
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [50%]
+* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [52%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -783,12 +783,70 @@ expression causes the function to convert a prefix arg to a number.)
    CLOSED: [2016-11-27 Sun 16:11]
 ** DONE The Body of copy-region-as-kill
    CLOSED: [2016-11-27 Sun 16:11]
-** TODO last-command & this-command
-** TODO kill-append function
-** TODO kill-new function
-** TODO Initializing a Variable with defvar
-** TODO See variable current value
-** TODO defvar and asterisk
+** DONE last-command & this-command
+   CLOSED: [2016-11-27 Sun 16:57]
+
+** DONE kill-append function
+   CLOSED: [2016-11-28 Mon 20:36]
+
+#+BEGIN_SRC elisp
+  (defun kill-append (string before-p &optional yank-handler)
+    "Append STRING to the end of the latest kill in the kill ring.
+       If BEFORE-P is non-nil, prepend STRING to the kill.
+       … "
+    (let* ((cur (car kill-ring)))
+      (kill-new (if before-p (concat string cur) (concat cur string))
+                (or (= (length cur) 0)
+                    (equal yank-handler
+                           (get-text-property 0 'yank-handler cur)))
+                yank-)))
+#+END_SRC
+
+
+** DONE kill-new function
+   CLOSED: [2016-11-28 Mon 20:36]
+** DONE Initializing a Variable with defvar
+   CLOSED: [2016-11-29 Tue 01:25]
+** DONE See variable current value
+   CLOSED: [2016-11-29 Tue 01:25]
+** DONE defvar and asterisk
+   CLOSED: [2016-11-29 Tue 01:26]
+** DONE Searching Exercises
+   CLOSED: [2016-11-29 Tue 01:33]
+
+• Write an interactive function that searches for a string.  If the
+     search finds the string, leave point after it and display a message
+     that says “Found!”.  (Do not use ‘search-forward’ for the name of
+     this function; if you do, you will overwrite the existing version
+     of ‘search-forward’ that comes with Emacs.  Use a name such as
+     ‘test-search’ instead.)
+
+#+BEGIN_SRC elisp
+  (defun jez/search-forward (string)
+    "Search for STRING in document after the current point"
+    (interactive "sString to search: ")
+    (if (search-forward string)
+        (message "Found!")))
+#+END_SRC
+#+RESULTS:
+: jez/search-forward
+
+
+• Write a function that prints the third element of the kill ring in
+     the echo area, if any; if the kill ring does not contain a third
+     element, print an appropriate message.
+
+
+#+BEGIN_SRC elisp
+  (defun jez/read-kill-ring-third-element ()
+    "Echo in buffer the third item in kill ring"
+    (interactive)
+    (message (nth-value 2 kill-ring)))
+#+END_SRC
+
+#+RESULTS:
+: jez/read-kill-ring-third-element
+
 ** TODO How Lists are Implemented
 ** TODO Lists diagrammed
 ** TODO Symbols as Chest
