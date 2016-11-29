@@ -12,7 +12,7 @@
 #+CREATOR: Emacs 25.1.1 (Org mode 8.3.6)
 
 
-* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [52%]
+* TODO [[https://www.gnu.org/software/emacs/manual/eintr.html][Introduction to emacs lisp]] [53%]
 ** DONE Why
    CLOSED: [2016-11-02 Wed 20:24]
 ** DONE On Reading this Text
@@ -847,10 +847,32 @@ expression causes the function to convert a prefix arg to a number.)
 #+RESULTS:
 : jez/read-kill-ring-third-element
 
-** TODO How Lists are Implemented
-** TODO Lists diagrammed
-** TODO Symbols as Chest
-** TODO List Exercise
+** DONE How Lists are Implemented
+   CLOSED: [2016-11-29 Tue 23:52]
+** DONE Lists diagrammed
+   CLOSED: [2016-11-29 Tue 23:52]
+** DONE Symbols as Chest
+   CLOSED: [2016-11-29 Tue 23:52]
+** DONE List Exercise [100%]
+
+*** DONE Set ‘flowers’ to ‘violet’ and ‘buttercup’.
+    CLOSED: [2016-11-29 Tue 23:58]
+*** DONE Cons two more flowers on to this list and set this new list to ‘more-flowers’.
+    CLOSED: [2016-11-29 Tue 23:58]
+*** DONE Set the CAR of ‘flowers’ to a fish.
+    CLOSED: [2016-11-30 Wed 00:10]
+
+*** What does the ‘more-flowers’ list now contain?
+
+#+BEGIN_SRC elisp :results raw
+  (setq flowers (list "flowers" "violet" "buttercup"))
+  (setq flowers (cons "another flower" flowers))
+  (setq flowers (cons "and another flower" flowers))
+  (cons "fish" (cdr flowers))
+#+END_SRC
+
+#+RESULTS:
+(fish another flower flowers violet buttercup)
 ** TODO Yanking Text Back
 ** TODO Kill Ring Overview
 ** TODO kill-ring-yank-pointer
