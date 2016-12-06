@@ -886,7 +886,7 @@ expression causes the function to convert a prefix arg to a number.)
 ** DONE yank nthcdr Exercises
    CLOSED: [2016-12-02 Fri 16:40]
 ** TODO Loops and Recursion
-
+*** Loop
 #+BEGIN_SRC elisp
   (defun jez/test-while ()
     "docstring"
@@ -912,6 +912,56 @@ expression causes the function to convert a prefix arg to a number.)
 #+END_SRC
 #+RESULTS:
 : jez/sum-of-consecutive
+
+
+
+#+BEGIN_SRC elisp
+  (defun jez/reverse-list (list)
+    "Reverse the LIST"
+    (let* (list-new)
+      (dolist (element list list-new)
+        (setq list-new (cons element list-new)))))
+  (jez/reverse-list '("a" "b" "c" "d" "e"))
+#+END_SRC
+#+RESULTS:
+| e | d | c | b | a |
+
+#+BEGIN_SRC elisp
+  (let* ((total 0))
+    (dotimes (element 5 total)
+      (setq total (+ element total))))
+#+END_SRC
+#+RESULTS:
+: 10
+
+*** Recursion
+
+#+BEGIN_SRC elisp :results output
+  (defun jez/print-recursive (list)
+    "Print the LIST"
+    (when list
+      (jez/print-recursive (cdr list))
+      (print (car list))))
+  (jez/print-recursive '("jez" "gonzaga" "arciaga"))
+#+END_SRC
+#+RESULTS:
+: 
+: "arciaga"
+: 
+: "gonzaga"
+: 
+: "jez"
+
+#+BEGIN_SRC elisp
+  (defun jez/triangle-recursive (number)
+    "Return sum of numbers from 1 to NUMBER"
+    (if (< 0 number)
+        (+ number (jez/triangle-recursive (1- number)))
+      0))
+  (jez/triangle-recursive 7)
+#+END_SRC
+#+RESULTS:
+: 28
 
 
 ** TODO while
